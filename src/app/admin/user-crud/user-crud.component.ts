@@ -51,6 +51,8 @@ export class UserCrudComponent implements OnInit{
       agreetc: ['', Validators.required],
       role: ['', Validators.required],
     })
+
+   
   }
   getAllUser(){
     this.adminService.allUser().subscribe(data =>{
@@ -181,6 +183,9 @@ export class UserCrudComponent implements OnInit{
       console.log("My error", error)
     })
   }
+
+  
 }
+
 
 

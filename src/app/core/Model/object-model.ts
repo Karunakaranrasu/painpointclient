@@ -21,7 +21,7 @@ export class Address{
   state!:string
   zipCode!:number;
 }
-export class Product{
+export class Employee{
   id!:number;
   name!:string
   uploadPhoto!:string;
@@ -34,7 +34,7 @@ export class Order{
   id!:number;
   userId!:number;
   sellerId!:number;
-  product!:Product;
+  product!:Employee;
   deliveryAddress!:Address;
   contact!:number;
   dateTime!:string;
