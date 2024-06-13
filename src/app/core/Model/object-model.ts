@@ -39,3 +39,15 @@ export class Order{
   contact!:number;
   dateTime!:string;
 }
+export interface FormControl {
+  Length?: number;
+  Type?: string;
+  Label: string;
+  Placeholder?: string;
+  Width?:number;
+  ValidRegEx?: string;
+  MaxLength?: number;
+  MinLength?: number;
+  DefaultValue: any;
+  Mask?: string
+}

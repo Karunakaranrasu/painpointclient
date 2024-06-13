@@ -1,0 +1,7 @@
+<div class="form-group">
+    <label for="employeeName">{{Settings.Label==undefined ? DefaultLabel : Settings.Label}}</label>
+    <input [value]="value" (input)="onInputChange($event)" type='text'
+        placeholder="{{Settings.Placeholder==undefined ? '' :  Settings.Placeholder}}"
+        [attr.maxlength]="Settings.MaxLength === undefined ? null : Settings.MaxLength"
+        [attr.minlength]="Settings.MinLength === undefined ? null : Settings.MinLength">
+</div>

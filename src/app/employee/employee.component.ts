@@ -1,14 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Employee } from '../core/Model/object-model';
+import { Employee, FormControl } from '../core/Model/object-model';
 import { Router } from '@angular/router';
 import { EmployeeService } from '../shared/services/employee.service';
+import { InputFormControlComponent } from '../shared/FormComponents/InputComponent/InputFormControl.component';
 
 @Component({
   selector: 'app-employee',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule,InputFormControlComponent],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.css'
 })
@@ -23,7 +24,13 @@ export class EmployeeComponent implements OnInit{
   single_employee_data:any;
   employee_dto!:Employee
   edit_employee_id:any;
-
+  Employee_Name :FormControl = {
+    "Label":"Employee Name",
+    "DefaultValue": "",
+    "Type":"String",
+    "MaxLength":2,
+    "Placeholder":"Employee Name"
+  }
   constructor(private fb:FormBuilder, private router:Router, private employeeService:EmployeeService){
 
   }
@@ -71,6 +78,7 @@ export class EmployeeComponent implements OnInit{
       dp:this.prouct_data.dp,
       status:this.prouct_data.status,
     }
+    console.log("addEditEmployeeDForm:",this.addEditEmployeeDForm.value)
     this.employeeService.addNewEmployee(this.employee_dto).subscribe(data=>{
       console.log(data);
       this.getAllEmployee();
