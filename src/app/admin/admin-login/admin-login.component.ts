@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginSignupService } from '../../shared/services/login-signup.service';
+import { Store } from '@ngxs/store';
+import { SetItems } from '../../shared/store/mystate';
 
 @Component({
   selector: 'app-admin-login',
@@ -15,7 +17,7 @@ import { LoginSignupService } from '../../shared/services/login-signup.service';
 export class AdminLoginComponent implements OnInit{
   signInFormValue:any ={};
   user_data:any;
-  constructor(private router:Router, private loginService:LoginSignupService){
+  constructor(private router:Router, private loginService:LoginSignupService, private store: Store){
 
   }
   ngOnInit(): void {
@@ -28,6 +30,7 @@ export class AdminLoginComponent implements OnInit{
         sessionStorage.setItem("user_session_id", this.user_data[0].id);
         sessionStorage.setItem("role", this.user_data[0].role);
         this.router.navigateByUrl('/admin-dashboard');
+        this.store.dispatch(new SetItems(true));
       }else{
         alert("Invailid Response")
       }
